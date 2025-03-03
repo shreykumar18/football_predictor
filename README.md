@@ -14,6 +14,10 @@ The dataset includes the following files:
 - `players.csv`: Player identifiers and metadata.
 - `appearances.csv`: Player appearances in matches.
 
+## Bayesian Network Structure
+
+![Bayesian Network Diagram](bayesian_network.png)
+
 ## AI Agent Design
 
 The AI agent is structured as a **goal-based agent** with the following components:
@@ -37,6 +41,13 @@ The AI agent is structured as a **goal-based agent** with the following componen
 
 3. **Discretization**  
    - Continuous features were discretized using `KBinsDiscretizer` to enable probabilistic reasoning in the Bayesian Network.
+  
+## Understanding `pgmpy` and Variable Elimination
+
+The model is built using `pgmpy`, a Python library that generally works with probabilistic graphical models and especially Bayesian Networks. One of the algorithms that Bayesian Networks uses is Variable elimination in order to calculate conditional probabilities. The process involves efficiently calculating these values by remove variables that aren't as relevant and therore obtaining values quicker which is better in some ways than caluclating with every variable factored in.
+
+In this project, variable elimination is used to infer the probability of match results given certain conditions, allowing us to make predictions efficiently.
+
 
 ## Model: Bayesian Network
 
@@ -79,7 +90,9 @@ The confusion matrix showed that the model struggled with predicting draws (`0` 
 ## Citations
 
 1. [Football Database - Kaggle](https://www.kaggle.com/datasets/technika148/football-database?resource=download)
-2. Chat GPT
+2. Chat GPT -
+This project was developed with assistance from ChatGPT for mainly debugging as well as understanding models for bayesian networks. A lot of conversation was spent on helping debug the predictive modelling of the data which on numerous occassions would take a long time to compute. Chat GPT helped me refine my preprocessing data stage as well as optimize the way in which my predictive functions were working. It also helped me understand concepts I was unfamiliar with like variable elimination.
+
 3. This project utilizes the pgmpy library for Bayesian Networks. 
 
 
