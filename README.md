@@ -16,7 +16,7 @@ The dataset includes the following files:
 
 ## Bayesian Network Structure
 
-![Bayesian Network Diagram](bayesian_network.png)
+![Bayesian Network Diagram](Bayesian_Network.png)
 
 ## AI Agent Design
 
