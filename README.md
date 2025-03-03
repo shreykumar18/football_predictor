@@ -74,6 +74,12 @@ The confusion matrix showed that the model struggled with predicting draws (`0` 
 3. **Parameter Tuning**  
    - Optimize discretization strategies for better binning of continuous features.
    - Adjust Bayesian Network structure based on domain insights.
+  
+
+## Citations
+
+1. [Football Database - Kaggle](https://www.kaggle.com/datasets/technika148/football-database?resource=download)
+2. Chat GPT
 
 
 
