@@ -18,6 +18,14 @@ The dataset includes the following files:
 
 ![Bayesian Network Diagram](bayesian_network.png)
 
+## Data Exploration
+
+The dataset that we are using is a football match data set that contains in depth game statistics and the following:
+- **Games Data**: Contains information on past football matches, including scores, and what teams.
+- **Team Stats**: This has a variety of stats for teams that measure performance like possession, xG etc.
+- **Shots**: This has precise information for number of shots, individual stats for goalscorers and assisters.
+
+
 ## AI Agent Design
 
 The AI agent is structured as a **goal-based agent** with the following components:
@@ -99,4 +107,4 @@ This project was developed with assistance from ChatGPT for mainly debugging as 
 
 ## Conclusion
 
-This project demonstrates how Bayesian Networks can be applied to football match prediction. Although the current model has limitations, it provides insights into match outcomes based on team statistics. Future work will involve refining feature selection and comparing different models for better accuracy.
+This project demonstrates how Bayesian Networks can be applied to football match prediction. Although the current model has limitations, it provides insights into match outcomes based on team statistics. In the future what I want to accomplish is first, integrate drawing in the predictive model by maybe putting a threshold on the probability and then to enhance the performance of the win and loss predictor by integrating other variables like possession, or take into account impact players that might influence the game. Players data is also given in the database and this makes a huge difference involving no matter how the team is playing , an individual might still have a bigger impact and this can maybe be accounted for in the future.
