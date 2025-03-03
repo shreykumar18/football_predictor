@@ -80,6 +80,7 @@ The confusion matrix showed that the model struggled with predicting draws (`0` 
 
 1. [Football Database - Kaggle](https://www.kaggle.com/datasets/technika148/football-database?resource=download)
 2. Chat GPT
+3. This project utilizes the pgmpy library for Bayesian Networks. 
 
 
 
