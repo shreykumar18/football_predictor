@@ -87,6 +87,108 @@ A Bayesian Network was constructed with nodes representing key features such as:
 
 The confusion matrix showed that the model struggled with predicting draws (`0` result) and had mixed performance on wins and losses.
 
+## Model 2: Naive Bayes Classifier
+
+After implementing a Bayesian Network, I explored a simpler probabilistic model to compare performances: the **Naive Bayes classifier**. This model works under the assumption that all features are independent of each other, which is often useful for baseline performance.
+
+### Features Used:
+- `xGoals`
+- `shotsOnTarget`
+- `deep`
+- `ppda`
+- `shots`
+
+### Training and Inference:
+- Missing values were handled and features were standardized.
+- The model was trained to directly predict the match `result` (win, draw, or loss).
+- The classifier was evaluated on a holdout test set.
+
+### Results:
+
+| Metric        | Score |
+|--------------|-------|
+| Accuracy     | ~53.1% |
+| Precision (-1, 0, 1) | 0.51, 0.26, 0.62 |
+| Recall (-1, 0, 1) | 0.76, 0.05, 0.62 |
+| F1-Score (-1, 0, 1) | 0.62, 0.09, 0.62 |
+
+Compared to the Bayesian Network, the Naive Bayes model achieved slightly higher accuracy but still had difficulty predicting draws (`0` result).
+
+### Notes:
+The simplicity of Naive Bayes helped reduce training time, but its performance plateaued due to strong feature independence assumptions.
+
+---
+
+## Model 3: Hidden Markov Model (HMM)
+
+To capture sequential patterns and trends (such as form streaks), I experimented with a **Hidden Markov Model (HMM)**. The goal was to model latent "states" representing team momentum over time.
+
+### Features Used (Sequential Trends):
+- `xGoals`
+- `shotsOnTarget`
+- `deep`
+- `ppda`
+- `shots`
+
+### Training and Inference:
+- Sequences were generated per team across multiple matches.
+- A Gaussian HMM was trained to model hidden states across the sequence.
+- The hidden states were then mapped to match `result` using majority voting over state-to-label mappings.
+
+### Results:
+
+| Metric        | Score |
+|--------------|-------|
+| Accuracy     | ~50% |
+| Precision (-1, 0, 1) | 0.59, 0.00, 0.46 |
+| Recall (-1, 0, 1) | 0.43, 0.00, 0.90 |
+| F1-Score (-1, 0, 1) | 0.49, 0.00, 0.61 |
+
+The HMM model performed competitively with prior models, especially in identifying winning trends, but once again had challenges in modeling draws.
+
+### Notes:
+The HMM provided deeper insights into how momentum or form changes over time. This model also introduced transition matrices between states, which could be further visualized.
+
+## Conclusion & Model Comparison
+
+### Comparative Performance Summary:
+
+| Model                   | Accuracy | Strengths                                         | Weaknesses                          |
+|-------------------------|----------|--------------------------------------------------|-------------------------------------|
+| Bayesian Network        | ~47%     | Probabilistic reasoning, interpretable structure | Poor at predicting draws, slow CPTs |
+| Naive Bayes Classifier  | ~53%     | Fast training, easy to implement                 | Oversimplified feature assumptions  |
+| Hidden Markov Model     | ~50%     | Captures sequential trends, form modeling        | Struggles with draws, complex tuning|
+
+### Key Takeaways:
+- **Naive Bayes** provided the highest baseline accuracy, showing that even simple models can outperform more complex models in certain setups.
+- **Bayesian Network** was interpretable but required more manual feature engineering and assumptions about dependencies.
+- **HMM** gave unique insights into momentum and form patterns through hidden states but did not outperform Naive Bayes on static accuracy.
+
+### Visual Analysis
+
+#### Hidden Markov Model - Confusion Matrix:
+![Confusion Matrix - HMM](confusionMatrix.png)
+
+The HMM performed well on predicting wins (`1`), but struggled with draws (`0`), a pattern consistent across all models.
+
+#### Hidden Markov Model - Transition Matrix:
+![HMM Transition Matrix](stateMatrix.png)
+
+The transition matrix illustrates that teams are most likely to stay in the same latent state or transition to a dominant central state (State 1). This indicates consistent behavioral patterns across matches.
+
+---
+
+### Future Work:
+- **Hybrid Model**: Combining HMM trends with Naive Bayes classifiers could potentially leverage both temporal and feature independence properties.
+- **Enhanced Features**: Adding player-level data or using time-decayed statistics for more dynamic modeling.
+- **Neural Models**: Exploring RNNs or LSTMs for better sequence handling.
+
+---
+
+### Final Remarks:
+While no model perfectly captures the complexity of football match outcomes, this project highlights how different AI strategies offer varying perspectives on predicting sporting events.
+
+
 ## Future Improvements
 
 1. **Feature Selection**  
