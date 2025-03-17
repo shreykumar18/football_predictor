@@ -153,6 +153,9 @@ The HMM provided deeper insights into how momentum or form changes over time. Th
 
 ### Comparative Performance Summary:
 
+
+This project demonstrates how Bayesian Networks can be applied to football match prediction. Although the current model has limitations, it provides insights into match outcomes based on team statistics. In the future what I want to accomplish is first, integrate drawing in the predictive model by maybe putting a threshold on the probability and then to enhance the performance of the win and loss predictor by integrating other variables like possession, or take into account impact players that might influence the game. Players data is also given in the database and this makes a huge difference involving no matter how the team is playing , an individual might still have a bigger impact and this can maybe be accounted for in the future.
+
 | Model                   | Accuracy | Strengths                                         | Weaknesses                          |
 |-------------------------|----------|--------------------------------------------------|-------------------------------------|
 | Bayesian Network        | ~47%     | Probabilistic reasoning, interpretable structure | Poor at predicting draws, slow CPTs |
@@ -208,11 +211,14 @@ While no model perfectly captures the complexity of football match outcomes, thi
 1. [Football Database - Kaggle](https://www.kaggle.com/datasets/technika148/football-database?resource=download)
 2. Chat GPT -
 This project was developed with assistance from ChatGPT for mainly debugging as well as understanding models for bayesian networks. A lot of conversation was spent on helping debug the predictive modelling of the data which on numerous occassions would take a long time to compute. Chat GPT helped me refine my preprocessing data stage as well as optimize the way in which my predictive functions were working. It also helped me understand concepts I was unfamiliar with like variable elimination.
+3. This project utilizes the pgmpy library for Bayesian Networks.
+4. **Scikit-learn** - Used for preprocessing (StandardScaler), model evaluation (classification_report, confusion_matrix), and implementing the Naive Bayes classifier.  
+   [Scikit-learn Documentation](https://scikit-learn.org/stable/)
+5. **hmmlearn** - Used to build and train the Gaussian Hidden Markov Model for sequence modeling.  
+   [hmmlearn Documentation](https://hmmlearn.readthedocs.io/en/latest/)
+6. **Matplotlib** - Used to plot confusion matrices and transition matrices for the models.  
+   [Matplotlib Documentation](https://matplotlib.org/stable/index.html)
+7. **Seaborn** - Utilized to enhance the heatmap visuals for transition and confusion matrices.  
+   [Seaborn Documentation](https://seaborn.pydata.org/)
 
-3. This project utilizes the pgmpy library for Bayesian Networks. 
 
-
-
-## Conclusion
-
-This project demonstrates how Bayesian Networks can be applied to football match prediction. Although the current model has limitations, it provides insights into match outcomes based on team statistics. In the future what I want to accomplish is first, integrate drawing in the predictive model by maybe putting a threshold on the probability and then to enhance the performance of the win and loss predictor by integrating other variables like possession, or take into account impact players that might influence the game. Players data is also given in the database and this makes a huge difference involving no matter how the team is playing , an individual might still have a bigger impact and this can maybe be accounted for in the future.
